@@ -1,0 +1,1 @@
+{"name":"lucane-site","private":true,"version":"1.0.0","type":"module","scripts":{"build":"node build.mjs","dev":"node server.mjs"},"dependencies":{"three":"^0.180.0"},"devDependencies":{"@fontsource-variable/manrope":"^5.2.0","esbuild":"^0.25.0","lighthouse":"^13.5.0","opentype.js":"^2.0.0","sharp":"^0.35.5"}}
