@@ -48,3 +48,7 @@ La proposition cite uniquement des catégories de lieux. Aucun résultat chiffr�
 - La prévisualisation GitHub Pages conserve volontairement `noindex,follow` et un sitemap vide jusqu’à validation client.
 - Les titres, descriptions, données structurées et pages de prestations sont préparés pour le référencement futur ; ils ne promettent aucun positionnement.
 - Les maquettes 3D et visuels représentent des bâtiments et des espaces illustratifs, pas des mesures réelles ni des projets réalisés.
+
+## Illustrations et contenu complémentaire, 29/09/2026
+
+Photographies d’ambiance : voir CREDITS.md, licence Pexels vérifiée. Les paragraphes sur les lieux d’écoute, sources et usages sont des explications générales, sans nouvelle revendication de résultat, certification ou réalisation client. Les quatre volumes 3D restent des illustrations abstraites.

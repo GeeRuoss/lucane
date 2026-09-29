@@ -1,9 +1,10 @@
 import * as THREE from 'three';
 import sharp from 'sharp';
 import {mkdir} from 'node:fs/promises';
-import {createArchitecturalModel,setupView} from './scene-model.mjs';
+import {createAcousticModel,setupView} from './scene-model.mjs';
 // Deterministic projection of the same meshes as WebGL, with a depth buffer.
-const width=1200,height=1067,model=createArchitecturalModel(),camera=setupView(width/height);
+for (const kind of ['abstract','building','waves','terrain']) {
+const width=1200,height=1067,model=createAcousticModel(kind),camera=setupView(width/height);
 model.rotation.y=-.12;model.updateMatrixWorld(true);
 const pixels=new Uint8Array(width*height*4),depth=new Float32Array(width*height);depth.fill(Infinity);
 const light=new THREE.Vector3(-3,8,6).normalize(),normal=new THREE.Vector3(),a=new THREE.Vector3(),b=new THREE.Vector3(),c=new THREE.Vector3(),ab=new THREE.Vector3(),ac=new THREE.Vector3(),view=new THREE.Vector3();
@@ -20,5 +21,6 @@ const col=new THREE.Color(colors[0].r*wa+colors[1].r*wb+colors[2].r*wc,colors[0]
 }}});
 const shadow=Buffer.from(`<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}"><defs><radialGradient id="s"><stop stop-color="#172651" stop-opacity=".22"/><stop offset="1" stop-color="#172651" stop-opacity="0"/></radialGradient></defs><ellipse cx="650" cy="785" rx="430" ry="125" fill="url(#s)"/></svg>`);
 const foreground=await sharp(pixels,{raw:{width,height,channels:4}}).png().toBuffer();
-await mkdir('assets',{recursive:true});const merged=await sharp(shadow).composite([{input:foreground}]).png().toBuffer();await sharp(merged).resize(1000).webp({quality:92}).toFile('assets/architecture-poster.webp');
-console.log('Rendered architectural poster');
+await mkdir('assets',{recursive:true});const merged=await sharp(shadow).composite([{input:foreground}]).png().toBuffer();await sharp(merged).resize(1000).webp({quality:92}).toFile(`assets/scene-${kind}.webp`);
+console.log(`Rendered ${kind} poster`);
+}

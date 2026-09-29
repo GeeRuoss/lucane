@@ -25,3 +25,7 @@ Confirmer les textes, l’hébergement définitif, l’activité WhatsApp du mob
 La publication sur lucane.ch n’est pas faite. Pour une future version officielle, renseigner SITE_MODE=production SITE_ORIGIN=https://lucane.ch SITE_BASE=/ ; vérifier le sitemap et les canoniques, puis préparer les redirections 301 depuis les anciennes URLs PHP sur l’hébergeur retenu. Adapter les textes de confidentialité et les conditions à la version officielle. Les vérifications Search Console et l’indexation demandent l’accès du propriétaire.
 
 Aucun tarif, avis, résultat technique ou accréditation n’est inventé. Le laboratoire béton cédé en 2024 ne figure pas dans l’offre actuelle.
+
+## Direction visuelle, version 3
+
+L’accueil utilise une sculpture abstraite de 23 lamelles. Les trois expertises possèdent chacune leur modèle : maison en strates, salle ouverte et relief. `node poster.mjs` régénère les quatre posters ; `node social.mjs` produit la carte de partage v3. `editorial.mjs` centralise les photos et textes complémentaires. Droits : voir CREDITS.md et la page Conditions.

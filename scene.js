@@ -1,5 +1,5 @@
 import * as THREE from 'three';
-import {createArchitecturalModel,setupView} from './scene-model.mjs';
+import {createAcousticModel,setupView} from './scene-model.mjs';
 const host=document.getElementById('acoustic-scene');
 if(host) mount(host);
 function mount(host){
@@ -13,7 +13,7 @@ function mount(host){
   renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1;
   renderer.domElement.style.cssText='position:absolute;inset:0;width:100%;height:100%;display:block;pointer-events:none';
   renderer.domElement.setAttribute('aria-hidden','true');host.append(renderer.domElement);
-  const scene=new THREE.Scene(),model=createArchitecturalModel();scene.add(model);
+  const scene=new THREE.Scene(),model=createAcousticModel(host.dataset.scene || 'abstract');scene.add(model);
   let camera=setupView();
   const ambient=new THREE.HemisphereLight(0xffffff,0x9aaacb,2.3);scene.add(ambient);
   const key=new THREE.DirectionalLight(0xffffff,3.2);key.position.set(-3,8,6);key.castShadow=true;key.shadow.mapSize.set(1024,1024);
