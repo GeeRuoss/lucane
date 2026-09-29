@@ -8,9 +8,9 @@ Site statique en français, 9 pages. Source publique métier : lucane.ch. Recher
 - `npm run build`
 - `npm run dev` : http://127.0.0.1:4318/lucane/
 
-Pages HTML générées par build.mjs ; contenu commun dans site-data.mjs ; CSS et JS sans framework ; sculpture Three.js locale. Aucun appel externe au chargement. Sur mobile, activation explicite de la 3D ; sur bureau, chargement après la première mise en page. Réduction des mouvements et pause hors écran prises en compte.
+Pages HTML générées par build.mjs ; contenu commun dans site-data.mjs ; CSS et JS sans framework ; maison architecturale Three.js locale. Aucun appel externe au chargement. Accueil bureau dimensionné sur la fenêtre visible, titre plafonné à 76 px et contenu limité à 1 360 px. Sur mobile, la 3D réagit au toucher du visuel ; sur bureau, chargement après la première mise en page. Entrée animée de 4,2 secondes, puis mouvement lié au pointeur. Aucun bouton play/pause ni légende décorative. Réduction des mouvements et pause hors écran prises en compte.
 
-Logo vectoriel en tracés : assets/logo.svg, logo-white.svg, logo-blue.svg. Police libre Manrope, licence dans assets/FONT-LICENSE.txt après build. `node logo.mjs` régénère les logos ; `node social.mjs` régénère l’image de partage.
+Logo vectoriel en tracés : assets/logo.svg, logo-white.svg, logo-blue.svg. Police libre Manrope, licence dans assets/FONT-LICENSE.txt après build. `node logo.mjs` régénère les logos ; `node poster.mjs` régénère le rendu de repli depuis les mêmes géométries que la scène ; `node social.mjs` régénère l’image de partage.
 
 ## Prévisualisation
 

@@ -47,4 +47,4 @@ La proposition cite uniquement des catégories de lieux. Aucun résultat chiffr�
 - La physique du bâtiment reste décrite sur l’ancien site, mais n’est pas mise en avant dans cette proposition centrée sur le recentrage acoustique.
 - La prévisualisation GitHub Pages conserve volontairement `noindex,follow` et un sitemap vide jusqu’à validation client.
 - Les titres, descriptions, données structurées et pages de prestations sont préparés pour le référencement futur ; ils ne promettent aucun positionnement.
-- Les visuels abstraits représentent des ondes et des espaces, pas des mesures réelles ni des projets réalisés.
+- Les maquettes 3D et visuels représentent des bâtiments et des espaces illustratifs, pas des mesures réelles ni des projets réalisés.

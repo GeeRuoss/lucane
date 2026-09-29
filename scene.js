@@ -1,200 +1,49 @@
 import * as THREE from 'three';
-
-// The sculpture is decorative; the page's content is always ordinary HTML.
-const host = document.getElementById('acoustic-scene');
-if (host) initAcousticSculpture(host);
-
-function initAcousticSculpture(host) {
-  host.setAttribute('aria-hidden', 'true');
-  const poster = document.createElement('img');
-  poster.src = new URL('./acoustic-sculpture.svg', import.meta.url).href;
-  poster.addEventListener('load', () => { const fallback=host.querySelector('.scene-fallback'); if(fallback) fallback.hidden=true; });
-  poster.alt = '';
-  poster.width = 680;
-  poster.height = 590;
-  poster.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;object-fit:contain;pointer-events:none;';
-  host.append(poster);
-
+import {createArchitecturalModel,setupView} from './scene-model.mjs';
+const host=document.getElementById('acoustic-scene');
+if(host) mount(host);
+function mount(host){
+  const reduced=matchMedia('(prefers-reduced-motion: reduce)');
+  if(reduced.matches)return;
   let renderer;
-  try {
-    renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true, powerPreference: 'low-power' });
-  } catch {
-    const toggle = document.getElementById('motion-toggle');
-    if (toggle) toggle.hidden = true;
-    return;
+  try{renderer=new THREE.WebGLRenderer({alpha:true,antialias:true,powerPreference:'low-power'});}catch{return;}
+  renderer.setPixelRatio(Math.min(devicePixelRatio||1,1.5));
+  renderer.setClearColor(0xe9e9e7,0);
+  renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;
+  renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1;
+  renderer.domElement.style.cssText='position:absolute;inset:0;width:100%;height:100%;display:block;pointer-events:none';
+  renderer.domElement.setAttribute('aria-hidden','true');host.append(renderer.domElement);
+  const scene=new THREE.Scene(),model=createArchitecturalModel();scene.add(model);
+  let camera=setupView();
+  const ambient=new THREE.HemisphereLight(0xffffff,0x9aaacb,2.3);scene.add(ambient);
+  const key=new THREE.DirectionalLight(0xffffff,3.2);key.position.set(-3,8,6);key.castShadow=true;key.shadow.mapSize.set(1024,1024);
+  Object.assign(key.shadow.camera,{left:-6,right:6,top:6,bottom:-6,near:.5,far:25});key.shadow.normalBias=.025;key.shadow.bias=-.0001;key.shadow.radius=4;scene.add(key);
+  const fill=new THREE.DirectionalLight(0xc7d5ff,.9);fill.position.set(4,3,-5);scene.add(fill);
+  const ground=new THREE.Mesh(new THREE.PlaneGeometry(30,30),new THREE.ShadowMaterial({opacity:.15}));ground.rotation.x=-Math.PI/2;ground.position.y=-.14;ground.receiveShadow=true;scene.add(ground);
+  const poster=host.querySelector('.scene-fallback');
+  let raf=0,visible=true,start=0,previous=0,elapsed=0,targetX=0,targetY=0,currentX=0,currentY=0;
+  const introDuration=4.2;
+  function draw(){renderer.render(scene,camera);if(poster)poster.hidden=true;}
+  function frame(now){
+    raf=0;if(!visible||document.hidden||reduced.matches)return;
+    if(!start)start=now;
+    const dt=previous?Math.min((now-previous)/1000,.05):.016;previous=now;elapsed+=dt;
+    const ease=1-Math.exp(-dt*5);currentX+=(targetX-currentX)*ease;currentY+=(targetY-currentY)*ease;
+    const progress=Math.min(elapsed/introDuration,1),intro=.16*Math.pow(1-progress,2);
+    model.rotation.y=-.12+intro+currentX*.15;
+    model.rotation.x=currentY*.045;
+    draw();
+    // Intro finishes within five seconds; later motion follows the pointer only.
+    if(elapsed<introDuration||Math.abs(targetX-currentX)>.001||Math.abs(targetY-currentY)>.001)raf=requestAnimationFrame(frame);
   }
-
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.6));
-  renderer.setClearColor(0xe9e9e7, 0);
-  renderer.shadowMap.enabled = true;
-  renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-  renderer.outputColorSpace = THREE.SRGBColorSpace;
-  renderer.toneMapping = THREE.ACESFilmicToneMapping;
-  renderer.toneMappingExposure = 1.06;
-  renderer.domElement.style.cssText = 'position:absolute;inset:0;display:block;width:100%;height:100%;pointer-events:none;';
-  host.append(renderer.domElement);
-
-  const scene = new THREE.Scene();
-  const camera = new THREE.OrthographicCamera(-4, 4, 3.5, -3.5, 0.1, 60);
-  camera.position.set(7.5, 5.1, 9);
-  camera.lookAt(0, 1.25, 0);
-
-  const sculpture = new THREE.Group();
-  sculpture.rotation.y = -.16;
-  scene.add(sculpture);
-
-  const material = new THREE.MeshStandardMaterial({
-    color: 0x172fc5,
-    roughness: .32,
-    metalness: .06,
-  });
-
-  for (let i = 0; i < 23; i += 1) {
-    const t = i / 22;
-    // Two crests, with a continuous curved edge across the complete object.
-    const height = 1.18 + 2.15 * Math.pow(Math.sin(t * Math.PI * 1.5 + .17), 2);
-    const width = .125;
-    const radius = .026;
-    const shape = new THREE.Shape();
-    shape.moveTo(-width / 2 + radius, 0);
-    shape.lineTo(width / 2 - radius, 0);
-    shape.quadraticCurveTo(width / 2, 0, width / 2, radius);
-    shape.lineTo(width / 2, height - radius);
-    shape.quadraticCurveTo(width / 2, height, width / 2 - radius, height);
-    shape.lineTo(-width / 2 + radius, height);
-    shape.quadraticCurveTo(-width / 2, height, -width / 2, height - radius);
-    shape.lineTo(-width / 2, radius);
-    shape.quadraticCurveTo(-width / 2, 0, -width / 2 + radius, 0);
-    const geometry = new THREE.ExtrudeGeometry(shape, {
-      steps: 1, depth: 1.65, bevelEnabled: true,
-      bevelSegments: 2, bevelSize: .015, bevelThickness: .015, curveSegments: 3,
-    });
-    geometry.translate(0, 0, -.825);
-    const fin = new THREE.Mesh(geometry, material);
-    fin.position.set((i - 11) * .238, .075, Math.sin(t * Math.PI * 2) * .14);
-    fin.castShadow = true;
-    fin.receiveShadow = true;
-    sculpture.add(fin);
-  }
-
-  const ground = new THREE.Mesh(new THREE.PlaneGeometry(30, 30), new THREE.ShadowMaterial({ opacity: .17 }));
-  ground.rotation.x = -Math.PI / 2;
-  ground.position.y = .015;
-  ground.receiveShadow = true;
-  scene.add(ground);
-
-  const hemisphere = new THREE.HemisphereLight(0xffffff, 0xa0acd2, 2.9);
-  scene.add(hemisphere);
-  const key = new THREE.DirectionalLight(0xffffff, 4.1);
-  key.position.set(-3, 8, 5);
-  key.castShadow = true;
-  key.shadow.mapSize.set(1024, 1024);
-  key.shadow.camera.left = -6;
-  key.shadow.camera.right = 6;
-  key.shadow.camera.top = 6;
-  key.shadow.camera.bottom = -6;
-  key.shadow.camera.near = .5;
-  key.shadow.camera.far = 22;
-  key.shadow.normalBias = .025;
-  key.shadow.bias = -.0001;
-  key.shadow.radius = 4;
-  scene.add(key);
-  const fill = new THREE.DirectionalLight(0xc5d5ff, 1.1);
-  fill.position.set(4, 2, -4);
-  scene.add(fill);
-
-  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-  let userPaused = false;
-  let inView = true;
-  let frame = 0;
-  let tick = 0;
-  let lastTime = 0;
-  let pointerX = 0;
-  let pointerY = 0;
-  let currentX = 0;
-  let currentY = 0;
-  const toggle = document.getElementById('motion-toggle');
-  const canAnimate = () => !reducedMotion.matches && !userPaused && inView && !document.hidden;
-
-  function updateToggle() {
-    if (!toggle) return;
-    const paused = reducedMotion.matches || userPaused;
-    toggle.setAttribute('aria-pressed', String(paused));
-    toggle.setAttribute('aria-label', paused ? 'Animer la sculpture' : 'Mettre la sculpture en pause');
-    toggle.dataset.paused = String(paused);
-    toggle.disabled = reducedMotion.matches;
-    const label = toggle.querySelector('[data-motion-label]');
-    if (label) label.textContent = paused ? 'Animation en pause' : 'Mettre en pause';
-  }
-
-  function render() {
-    renderer.render(scene, camera);
-    poster.style.visibility = 'hidden';
-  }
-
-  function animate(now) {
-    frame = 0;
-    if (!canAnimate()) return;
-    const delta = lastTime ? Math.min((now - lastTime) / 1000, .04) : .016;
-    lastTime = now;
-    tick += delta;
-    const ease = 1 - Math.exp(-delta * 3);
-    currentX += (pointerX - currentX) * ease;
-    currentY += (pointerY - currentY) * ease;
-    sculpture.rotation.y = -.16 + Math.sin(tick * .22) * .095 + currentX * .14;
-    sculpture.rotation.z = currentY * .018;
-    render();
-    frame = requestAnimationFrame(animate);
-  }
-
-  function syncAnimation() {
-    updateToggle();
-    if (frame) cancelAnimationFrame(frame);
-    frame = 0;
-    lastTime = 0;
-    if (canAnimate()) frame = requestAnimationFrame(animate);
-    else render();
-  }
-
-  function resize() {
-    const width = host.clientWidth;
-    const height = host.clientHeight;
-    if (!width || !height) return;
-    renderer.setSize(width, height, false);
-    const aspect = width / height;
-    const viewHeight = Math.max(5.25, 6.65 / aspect);
-    camera.left = -viewHeight * aspect / 2;
-    camera.right = viewHeight * aspect / 2;
-    camera.top = viewHeight / 2;
-    camera.bottom = -viewHeight / 2;
-    camera.updateProjectionMatrix();
-    render();
-  }
-
-  host.addEventListener('pointermove', (event) => {
-    if (event.pointerType === 'touch' || reducedMotion.matches) return;
-    const bounds = host.getBoundingClientRect();
-    pointerX = ((event.clientX - bounds.left) / bounds.width - .5) * 2;
-    pointerY = ((event.clientY - bounds.top) / bounds.height - .5) * 2;
-  }, { passive: true });
-  host.addEventListener('pointerleave', () => { pointerX = 0; pointerY = 0; });
-  toggle?.addEventListener('click', () => { userPaused = !userPaused; syncAnimation(); });
-  reducedMotion.addEventListener('change', syncAnimation);
-  document.addEventListener('visibilitychange', syncAnimation);
+  function wake(){if(!raf&&visible&&!document.hidden&&!reduced.matches){previous=0;raf=requestAnimationFrame(frame);}}
+  function resize(){const w=host.clientWidth,h=host.clientHeight;if(!w||!h)return;renderer.setSize(w,h,false);camera=setupView(w/h);draw();wake();}
+  host.addEventListener('pointermove',e=>{if(e.pointerType==='touch')return;const rect=host.getBoundingClientRect();targetX=(e.clientX-rect.left)/rect.width*2-1;targetY=(e.clientY-rect.top)/rect.height*2-1;wake();},{passive:true});
+  host.addEventListener('pointerleave',()=>{targetX=0;targetY=0;wake();});
+  document.addEventListener('visibilitychange',()=>{if(document.hidden){cancelAnimationFrame(raf);raf=0;}else wake();});
+  reduced.addEventListener('change',()=>{cancelAnimationFrame(raf);raf=0;if(reduced.matches){model.rotation.set(0,-.12,0);draw();}else wake();});
   new ResizeObserver(resize).observe(host);
-  new IntersectionObserver(([entry]) => {
-    inView = entry.isIntersecting;
-    syncAnimation();
-  }, { rootMargin: '80px' }).observe(host);
-  renderer.domElement.addEventListener('webglcontextlost', (event) => {
-    event.preventDefault();
-    if (frame) cancelAnimationFrame(frame);
-    frame = 0;
-    userPaused = true;
-    poster.style.visibility = 'visible';
-    renderer.domElement.style.visibility = 'hidden';
-    if (toggle) toggle.hidden = true;
-  });
-  resize();
-  syncAnimation();
+  new IntersectionObserver(([entry])=>{visible=entry.isIntersecting;if(visible)wake();else{cancelAnimationFrame(raf);raf=0;}},{rootMargin:'20px'}).observe(host);
+  renderer.domElement.addEventListener('webglcontextlost',e=>{e.preventDefault();cancelAnimationFrame(raf);raf=0;renderer.domElement.hidden=true;if(poster)poster.hidden=false;});
+  resize();wake();
 }
