@@ -4,8 +4,9 @@ import {RoomEnvironment} from 'three/addons/environments/RoomEnvironment.js';
 const host=document.querySelector('#speaker-scene');
 if(host)mount();
 function mount(){
+  const fallback=()=>{host.dataset.failed='true';host.querySelector('.speaker-poster').hidden=false;};
   let renderer;
-  try{renderer=new THREE.WebGLRenderer({alpha:true,antialias:true,powerPreference:'low-power'});}catch{return;}
+  try{renderer=new THREE.WebGLRenderer({alpha:true,antialias:true,powerPreference:'low-power'});}catch{fallback();return;}
   const canvas=renderer.domElement;canvas.setAttribute('aria-hidden','true');host.append(canvas);
   renderer.setPixelRatio(Math.min(devicePixelRatio||1,1.5));renderer.outputColorSpace=THREE.SRGBColorSpace;
   renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.1;
@@ -52,7 +53,7 @@ function mount(){
   function release(){pointer=null;host.classList.remove('is-dragging');}
   host.addEventListener('pointerup',release);host.addEventListener('pointercancel',release);host.addEventListener('lostpointercapture',release);
   host.addEventListener('keydown',e=>{if(!['ArrowLeft','ArrowRight','ArrowUp','ArrowDown','Home'].includes(e.key))return;e.preventDefault();autoRotate=false;if(e.key==='Home'){theta=initialTheta;phi=initialPhi;}if(e.key==='ArrowLeft')theta-=.12;if(e.key==='ArrowRight')theta+=.12;if(e.key==='ArrowUp')phi=Math.max(.55,phi-.09);if(e.key==='ArrowDown')phi=Math.min(1.65,phi+.09);request();});
-  canvas.addEventListener('webglcontextlost',e=>{e.preventDefault();lost=true;delete host.dataset.ready;canvas.hidden=true;});
-  new GLTFLoader().load(new URL('./speaker.glb',import.meta.url).href,gltf=>{const model=gltf.scene;const box=new THREE.Box3().setFromObject(model),size=box.getSize(new THREE.Vector3());model.scale.setScalar(.5/size.y);box.setFromObject(model);const center=box.getCenter(new THREE.Vector3());model.position.set(-center.x,.55-box.min.y,-center.z);scene.add(model);ready=true;const hint=document.querySelector('.orbital-bottom p');if(hint)hint.textContent='Glissez pour explorer';resize();},undefined,()=>{canvas.remove();host.dataset.failed='true';});
+  canvas.addEventListener('webglcontextlost',e=>{e.preventDefault();lost=true;delete host.dataset.ready;canvas.hidden=true;fallback();});
+  new GLTFLoader().load(new URL('./speaker.glb',import.meta.url).href,gltf=>{const model=gltf.scene;const box=new THREE.Box3().setFromObject(model),size=box.getSize(new THREE.Vector3());model.scale.setScalar(.5/size.y);box.setFromObject(model);const center=box.getCenter(new THREE.Vector3());model.position.set(-center.x,.55-box.min.y,-center.z);scene.add(model);ready=true;const hint=document.querySelector('.orbital-bottom p');if(hint)hint.textContent='Glissez pour explorer';resize();},undefined,()=>{canvas.remove();fallback();});
   resize();
 }
