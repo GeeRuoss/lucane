@@ -52,3 +52,7 @@ La proposition cite uniquement des catégories de lieux. Aucun résultat chiffr�
 ## Illustrations et contenu complémentaire, 29/09/2026
 
 Photographies d’ambiance : voir CREDITS.md, licence Pexels vérifiée. Les paragraphes sur les lieux d’écoute, sources et usages sont des explications générales, sans nouvelle revendication de résultat, certification ou réalisation client. Les quatre volumes 3D restent des illustrations abstraites.
+
+## Accueil 3D, 30/09/2026
+
+Le haut-parleur utilise le modèle fourni pour le projet. Le trépied et la lumière sont des éléments de présentation. Les dimensions ne constituent pas un plan technique. Les modèles des pages de services restent illustratifs.

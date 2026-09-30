@@ -8,7 +8,7 @@ Site statique en français, 9 pages. Source publique métier : lucane.ch. Recher
 - `npm run build`
 - `npm run dev` : http://127.0.0.1:4318/lucane/
 
-Pages HTML générées par build.mjs ; contenu commun dans site-data.mjs ; CSS et JS sans framework ; maison architecturale Three.js locale. Aucun appel externe au chargement. Accueil bureau dimensionné sur la fenêtre visible, titre plafonné à 76 px et contenu limité à 1 360 px. Sur mobile, la 3D réagit au toucher du visuel ; sur bureau, chargement après la première mise en page. Entrée animée de 4,2 secondes, puis mouvement lié au pointeur. Aucun bouton play/pause ni légende décorative. Réduction des mouvements et pause hors écran prises en compte.
+Pages HTML générées par build.mjs ; contenu commun dans site-data.mjs ; CSS et JS sans framework ; scènes Three.js locales. Aucun appel externe au chargement. Accueil sur une fenêtre visible, titre plafonné à 44 px et scène limitée à 1 360 px. Sur mobile, le poster est immédiat et la 3D se charge au premier toucher. Haut-parleur sur trépied : glisser horizontalement à la souris ou au toucher pour tourner autour ; flèches du clavier et touche Début disponibles. Défilement vertical préservé. Rendu uniquement lors des interactions et changements de taille ; arrêt hors écran. Image de remplacement si WebGL ou le modèle ne charge pas. Aucun bouton play/pause ni animation automatique.
 
 Logo vectoriel en tracés : assets/logo.svg, logo-white.svg, logo-blue.svg. Police libre Manrope, licence dans assets/FONT-LICENSE.txt après build. `node logo.mjs` régénère les logos ; `node poster.mjs` régénère le rendu de repli depuis les mêmes géométries que la scène ; `node social.mjs` régénère l’image de partage.
 
@@ -26,6 +26,6 @@ La publication sur lucane.ch n’est pas faite. Pour une future version officiel
 
 Aucun tarif, avis, résultat technique ou accréditation n’est inventé. Le laboratoire béton cédé en 2024 ne figure pas dans l’offre actuelle.
 
-## Direction visuelle, version 3
+## Direction visuelle, version 4
 
-L’accueil utilise une sculpture abstraite de 23 lamelles. Les trois expertises possèdent chacune leur modèle : maison en strates, salle ouverte et relief. `node poster.mjs` régénère les quatre posters ; `node social.mjs` produit la carte de partage v3. `editorial.mjs` centralise les photos et textes complémentaires. Droits : voir CREDITS.md et la page Conditions.
+Haut-parleur omnidirectionnel fourni pour le projet, posé sur un trépied à trois pieds. Accueil minimal, fond clair, bleu Lucane #172fc5, liens répartis autour du modèle. Les trois expertises conservent leurs compositions abstraites : maison en strates, salle ouverte et relief. `node poster.mjs` régénère leurs posters ; `poster-speaker.py` régénère le poster du haut-parleur avec Blender et Pillow. `node social.mjs` produit la carte de partage v4. `editorial.mjs` centralise les photos et textes complémentaires. Droits : voir CREDITS.md et la page Conditions.
