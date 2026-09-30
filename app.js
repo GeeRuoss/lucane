@@ -12,3 +12,5 @@ const bubble=document.querySelector('.contact-bubble');function hideBubble(){if(
 bubble?.querySelector('button').addEventListener('click',hideBubble);let shown=false;try{shown=sessionStorage.getItem('lucane-contact-seen')==='1';}catch{}
 const offerContact=()=>{if(shown||!bubble)return;if(document.hidden||document.body.classList.contains('menu-open')||document.body.classList.contains('field-active')){setTimeout(offerContact,2500);return;}bubble.hidden=false;shown=true;try{sessionStorage.setItem('lucane-contact-seen','1');}catch{}};setTimeout(offerContact,5000);
 document.addEventListener('focusin',e=>{document.body.classList.toggle('field-active',e.target.matches('input,textarea,select'));});document.addEventListener('focusout',()=>{setTimeout(()=>document.body.classList.toggle('field-active',document.activeElement?.matches('input,textarea,select')),0);});
+
+const opening=document.querySelector('.orbital-hero');if(opening)new IntersectionObserver(([entry])=>document.body.classList.toggle('hero-visible',entry.isIntersecting)).observe(opening);
