@@ -48,7 +48,7 @@
 .orbital-heading p{font-size:15px;color:#626675;letter-spacing:.04em;margin-bottom:16px}
 .orbital-heading h1{font-size:clamp(32px,3.4vw,48px);font-weight:500;letter-spacing:-.05em;line-height:1.2}
 .orbital-heading h1 span{color:var(--blue)}
-.orbital-stage{position:absolute;inset:110px 0 58px;max-width:1360px;width:100%;margin:auto}
+.orbital-stage{position:absolute;inset:90px 0 35px;max-width:1360px;width:100%;margin:auto}
 #speaker-scene{position:absolute;inset:0;max-width:760px;width:60%;margin:auto;cursor:grab;touch-action:pan-y;outline-offset:-12px;border-radius:50%;z-index:1}
 #speaker-scene.is-dragging{cursor:grabbing}
 #speaker-scene canvas,.speaker-poster{position:absolute;inset:0;width:100%;height:100%;display:block;object-fit:contain}
@@ -69,7 +69,7 @@
   .orbital-heading p{font-size:13px;margin-bottom:12px;letter-spacing:0}
   .orbital-heading h1{font-size:clamp(32px,8.7vw,39px);max-width:370px;margin:auto;line-height:1.12;font-weight:550}
   .orbital-heading h1 span{display:block}
-  .orbital-stage{top:120px;bottom:248px}
+  .orbital-stage{top:98px;bottom:205px}
   #speaker-scene{width:100%;max-width:none;inset:0}
   #speaker-scene canvas,.speaker-poster{transform:scale(1.2)}
   .orbital-nav{inset:auto 24px -178px;width:auto;height:158px;display:grid;grid-template-columns:1.2fr 1fr;gap:0 22px;transform:none}
