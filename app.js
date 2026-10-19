@@ -1,6 +1,6 @@
 const menuButton=document.querySelector('.menu-toggle');
 const mobileNav=document.querySelector('#mobile-nav');
-const setInert=value=>{document.querySelector('main').inert=value;document.querySelector('footer').inert=value;};
+const setInert=value=>{document.querySelector('main').inert=value;document.querySelector('footer').inert=value;const walker=document.querySelector('.lucane-walker');if(walker)walker.inert=value;};
 const closeMenu=()=>{setInert(false);mobileNav.hidden=true;menuButton.setAttribute('aria-expanded','false');document.body.classList.remove('menu-open');};
 menuButton?.addEventListener('click',()=>{const open=menuButton.getAttribute('aria-expanded')!=='true';mobileNav.hidden=!open;setInert(open);menuButton.setAttribute('aria-expanded',String(open));document.body.classList.toggle('menu-open',open);if(open)mobileNav.querySelector('a').focus();});
 mobileNav?.addEventListener('click',e=>{const link=e.target.closest('a');if(link){closeMenu();const dest=new URL(link.href);if(dest.pathname===location.pathname&&dest.hash){const target=document.querySelector(dest.hash);if(target){target.setAttribute('tabindex','-1');target.focus({preventScroll:true});}}}});
@@ -14,3 +14,8 @@ const offerContact=()=>{if(shown||!bubble)return;if(document.hidden||document.bo
 document.addEventListener('focusin',e=>{document.body.classList.toggle('field-active',e.target.matches('input,textarea,select'));});document.addEventListener('focusout',()=>{setTimeout(()=>document.body.classList.toggle('field-active',document.activeElement?.matches('input,textarea,select')),0);});
 
 const opening=document.querySelector('.orbital-hero');if(opening)new IntersectionObserver(([entry])=>document.body.classList.toggle('hero-visible',entry.isIntersecting)).observe(opening);
+
+const beetleButton=document.querySelector('.lucane-beetle');
+beetleButton?.addEventListener('click',()=>beetleButton.setAttribute('aria-expanded',String(beetleButton.getAttribute('aria-expanded')!=='true')));
+document.addEventListener('keydown',e=>{if(e.key==='Escape')beetleButton?.setAttribute('aria-expanded','false');});
+document.addEventListener('click',e=>{if(!e.target.closest('.lucane-walker'))beetleButton?.setAttribute('aria-expanded','false');});

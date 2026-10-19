@@ -29,3 +29,7 @@ Aucun tarif, avis, résultat technique ou accréditation n’est inventé. Le la
 ## Direction visuelle, version 4
 
 Haut-parleur omnidirectionnel fourni pour le projet, posé sur un trépied à trois pieds. Accueil minimal, fond clair, bleu Lucane #172fc5, liens répartis autour du modèle sur ordinateur. Sur téléphone, modèle agrandi et navigation tactile en deux colonnes sous la scène. Les trois expertises conservent leurs compositions abstraites : maison en strates, salle ouverte et relief. `node poster.mjs` régénère leurs posters ; `poster-speaker.py` régénère le poster du haut-parleur avec Blender et Pillow. `node social.mjs` produit la carte de partage v4. `editorial.mjs` centralise les photos et textes complémentaires. Droits : voir CREDITS.md et la page Conditions.
+
+## Corrections du 19 octobre 2026
+
+Textes du bureau et des trois expertises actualisés selon le retour client. Libellé « Bruit environnemental » partout. Suppression des bandeaux de sollicitation, du bloc approche et des sections avec la photo de vallée. Bandeau illustratif avec panneau perforé et courbes sans données de mesure. Lucane vectoriel animé au pied des pages, définition et traductions accessibles au survol, au clavier et au toucher ; mouvements réduits respectés. Sources pour le vocabulaire : https://gd.eppo.int/taxon/LUCACE et https://www.karch.ch/fr/faune-de-suisse/insectes/coleopteres/aide-de-distinction-lucane-cerf-volant-et-petite-biche. Carte de partage v4 conservée : identité et haut-parleur principal inchangés.
