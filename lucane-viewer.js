@@ -13,7 +13,7 @@ if(host){
  let radius=6,theta=2.6,phi=.75,ready=false;
  function draw(){if(!ready)return;camera.position.copy(target).add(new THREE.Vector3().setFromSphericalCoords(radius*Math.max(1,1.1/camera.aspect),phi,theta));camera.lookAt(target);renderer.render(scene,camera);}
  function resize(){const w=host.clientWidth,h=host.clientHeight;if(!w||!h)return;renderer.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix();draw();}new ResizeObserver(resize).observe(host);
- new GLTFLoader().load(new URL('./lucane-prototype.glb',import.meta.url).href,g=>{const box=new THREE.Box3().setFromObject(g.scene),size=box.getSize(new THREE.Vector3());box.getCenter(target);scene.add(g.scene);radius=Math.max(size.x,size.y,size.z)*1.8;ready=true;host.dataset.ready='true';resize();},undefined,()=>{host.dataset.failed='true';});
+ new GLTFLoader().load(new URL('./lucane-anatomique-v2.glb',import.meta.url).href,g=>{const box=new THREE.Box3().setFromObject(g.scene),size=box.getSize(new THREE.Vector3());box.getCenter(target);scene.add(g.scene);radius=Math.max(size.x,size.y,size.z)*1.8;ready=true;host.dataset.ready='true';resize();},undefined,()=>{host.dataset.failed='true';});
  let pointer;
  host.addEventListener('pointerdown',e=>{if(e.button!==0)return;pointer={id:e.pointerId,x:e.clientX,y:e.clientY,theta,phi,active:false,touch:e.pointerType==='touch'};});
  host.addEventListener('pointermove',e=>{if(!pointer||pointer.id!==e.pointerId)return;const dx=e.clientX-pointer.x,dy=e.clientY-pointer.y;if(!pointer.active){if(Math.hypot(dx,dy)<6)return;if(pointer.touch&&Math.abs(dy)>Math.abs(dx)){pointer=null;return;}pointer.active=true;host.setPointerCapture(e.pointerId);}theta=pointer.theta-dx*.008;phi=THREE.MathUtils.clamp(pointer.phi-dy*.005,.2,1.5);draw();});

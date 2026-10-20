@@ -131,3 +131,5 @@
 @media(max-width:767px){.footer-panel{inset:0 0 20px 12%;background-size:cover}.footer-graph{left:0;right:13%;padding:12px;bottom:-6px}.footer-acoustic-art{height:300px}}
 
 .lucane-study h1{font-size:clamp(38px,5vw,72px);line-height:1.1;letter-spacing:-.055em;text-align:left}.lucane-study>p{max-width:720px;margin-top:24px;font-size:20px}.lucane-study .study-note{font-size:17px;color:#515359;margin-top:24px}#lucane-model{position:relative;height:580px;margin:35px 0;background:#e9e9e7;border-radius:24px;overflow:hidden;touch-action:pan-y;cursor:grab}#lucane-model:active{cursor:grabbing}#lucane-model canvas{position:absolute;inset:0;width:100%;height:100%}.lucane-model-poster{width:100%;height:100%;object-fit:contain}#lucane-model[data-ready] .lucane-model-poster{visibility:hidden}.lucane-model-error{display:none;position:absolute;bottom:20px;left:24px;right:24px;font-size:16px}#lucane-model[data-failed] .lucane-model-error{display:block}@media(max-width:767px){#lucane-model{height:420px;margin-top:28px}.lucane-study>p{font-size:18px}}
+
+body:has(.lucane-study) .contact-bubble{display:none}
