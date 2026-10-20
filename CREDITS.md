@@ -11,3 +11,9 @@ Vérification le 29 septembre 2026. Usage commercial sur un site autorisé par l
 Fichiers issus des téléchargements officiels images.pexels.com/photos/{id}/pexels-photo-{id}.jpeg. Dérivés WebP avec redimensionnement et cadrage CSS, métadonnées retirées. Aucun montage ni retouche de contenu. Rouge-gorge limité à 1200 px pour la plus grande variante ; les autres images sont disponibles à 1600 px.
 
 Les scènes abstraites, maison, pavillon et relief sont des compositions originales définies dans scene-model.mjs. Les posters et la carte de partage sont générés depuis les mêmes modèles.
+
+## Références de Florence, 20 octobre 2026
+
+Cinq images reçues de Florence par WhatsApp sont conservées dans le dossier privé du projet, hors dépôt. La tôle perforée du pied de page provient du visuel fourni et a été recadrée et optimisée pour le web. Les courbes décoratives sont redessinées d’après son document ; elles ne constituent pas une étude ou un résultat contractuel.
+
+Le modèle `lucane-prototype.glb` est une création procédurale du projet, inspirée de la référence du lucane noir fournie par Florence. Aucun modèle externe n’est réutilisé. Il s’agit d’une interprétation en volume d’une seule vue et non d’une numérisation fidèle de l’animal. Source Blender et script conservés dans le dossier local de modélisation du projet.
