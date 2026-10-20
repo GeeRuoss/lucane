@@ -85,16 +85,16 @@
 
 /* Illustrations acoustiques et lucane interactif. */
 .lucane-walker{position:relative;width:100%;height:120px;background:var(--bg,#f5f5f2);z-index:3}
-.lucane-beetle{position:absolute;left:14%;top:16px;width:64px;height:84px;padding:5px;border:0;background:transparent;color:#172fc5;cursor:pointer;animation:lucane-stroll 24s ease-in-out infinite alternate;touch-action:manipulation}
-.lucane-beetle svg{width:100%;height:100%;transform:rotate(90deg)}
+.lucane-beetle{position:absolute;left:14%;top:16px;width:106px;height:76px;padding:5px;border:0;background:transparent;color:#172fc5;cursor:pointer;animation:lucane-stroll 24s ease-in-out infinite alternate;touch-action:manipulation}
+.lucane-beetle img{width:100%;height:100%;object-fit:contain}
 .beetle-legs{transform-origin:50% 65%;animation:lucane-steps .35s ease-in-out infinite alternate}
 .lucane-definition{position:absolute;bottom:112px;left:clamp(16px,10vw,160px);width:min(350px,calc(100vw - 32px));padding:24px;background:#172fc5;color:white;border-radius:16px;box-shadow:0 12px 40px #172fc530;visibility:hidden;opacity:0;transition:opacity .15s;font-size:18px;line-height:1.5}
 .lucane-definition strong{font-size:21px}.lucane-definition p{margin-top:12px}
 .lucane-walker:has(.lucane-beetle:hover) .lucane-definition,.lucane-walker:has(.lucane-beetle:focus-visible) .lucane-definition,.lucane-walker:has([aria-expanded="true"]) .lucane-definition{visibility:visible;opacity:1}
 .lucane-walker:has(.lucane-beetle:hover) .lucane-beetle,.lucane-walker:has(.lucane-beetle:focus-visible) .lucane-beetle,.lucane-walker:has([aria-expanded="true"]) .lucane-beetle{animation-play-state:paused}
-@keyframes lucane-stroll{to{left:78%}}
+@keyframes lucane-stroll{to{left:calc(100% - 130px)}}
 @keyframes lucane-steps{to{transform:rotate(5deg)}}
-@media(max-width:767px){.lucane-beetle{width:58px;height:76px}.lucane-definition{font-size:17px}.orbit-environment{max-width:100%}}
+@media(max-width:767px){.lucane-beetle{width:96px;height:70px}.lucane-definition{font-size:17px}.orbit-environment{max-width:100%}}
 @media(prefers-reduced-motion:reduce){.lucane-beetle,.beetle-legs{animation:none}}
 @media(max-width:767px){.lucane-definition{left:16px;width:calc(100% - 32px)}}
 
