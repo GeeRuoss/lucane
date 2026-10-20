@@ -100,3 +100,9 @@
 @media(max-width:767px){.acoustic-banner{grid-template-columns:1fr;padding-block:42px;gap:40px}.perforated-panel{min-height:190px;margin-inline:14px}.acoustic-curves{max-width:500px}.lucane-beetle{width:58px;height:76px}.lucane-definition{font-size:17px}.orbit-environment{max-width:100%}}
 @media(prefers-reduced-motion:reduce){.lucane-beetle,.beetle-legs{animation:none}}
 @media(max-width:767px){.lucane-definition{left:16px;width:calc(100% - 32px)}}
+
+/* Une même marge de contenu pour les titres de toutes les sections. */
+.section{padding-inline:max(var(--space),calc((100% - var(--max-width))/2 + var(--space)));max-width:none}
+.legal{max-width:none}
+.legal> *{max-width:824px}
+.detail-hero h1,.section h2,.section h3{text-align:left}
