@@ -57,3 +57,5 @@ Contrôles locaux : rendus à 320 × 640, 390 × 844, 768 × 900, 1280 × 720, 1
 
 
 Précision du 30 octobre : le support de la courbe est avancé devant la tôle perforée et légèrement relevé pour rendre le tracé visible. La boule reste au premier plan. Poster et carte de partage v6 synchronisés, contrôle visuel bureau 1440 px et téléphone 390 px.
+
+Les cinq liens autour de la scène ont un contour bleu et des coins arrondis pour rendre leur fonction de bouton explicite. Fond bleu au survol et au focus clavier. Sur mobile, boutons séparés dans une grille de deux colonnes et bouton « Votre projet » sur toute la largeur ; espace réservé adapté pour garder le texte lisible. Composition 3D et carte de partage conservées.
