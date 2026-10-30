@@ -23,3 +23,8 @@ Le modèle `lucane-prototype.glb` est une création procédurale du projet, insp
 Modèle manuel affiné d’après les vues dorsale et céphalique du spécimen du Muséum de Toulouse photographié par Didier Descouens, ainsi que la vue oblique du Parc national des Écrins (Ludovic Imberdis). Références : [vue dorsale](https://commons.wikimedia.org/wiki/File:Cerf-volant_MHNT_Dos.jpg), [tête et mandibules](https://commons.wikimedia.org/wiki/File:Cerf-volant_MHNT_Close_up.jpg), [Écrins](https://biodiversite.ecrins-parcnational.fr/espece/10502). Aucune photographie n’est incluse comme texture ; rugosité et normales synthétiques. Les photographies de référence restent hors dépôt. Le modèle est une interprétation anatomique, pas une mesure de scan.
 
 Le scan du Yale Peabody Museum YPM ENT.626274 (Jeremy D. Pustilnik, CC BY 4.0) est identifié comme source potentielle plus fidèle, mais n’est pas utilisé dans ce modèle manuel : [source](https://sketchfab.com/3d-models/ypm-ent626274-coleoptera-lucanus-cervus-9e8bc912651b4b7e91b5f1e0aac5e8de).
+
+
+### Composition d’accueil, 30 octobre 2026
+
+Tôle perforée et courbe créées en géométrie Three.js dans `speaker-backdrop.js`, inspirées des références historiques de Florence. La courbe sert à illustrer le métier et ne représente pas des mesures. Le modèle du haut-parleur fourni au projet est conservé au premier plan. Poster et carte de partage v5 issus de cette même composition.

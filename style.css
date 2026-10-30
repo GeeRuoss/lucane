@@ -42,22 +42,22 @@
 
 #acoustic-scene{min-height:0}
 .scene-fallback img{position:absolute;inset:0;min-width:0;min-height:0}
-/* Immersive acoustic source, with ordinary links around the interactive model. */
+/* Composition acoustique en volume, liens accessibles autour de la scène. */
 .orbital-hero{position:relative;height:calc(100svh - var(--header-height));min-height:650px;overflow:hidden;color:var(--ink);background:radial-gradient(ellipse at 50% 48%,#e3e7f5 0%,var(--paper) 58%)}
 .orbital-heading{position:absolute;inset:35px 24px auto;text-align:center;z-index:3;pointer-events:none}
 .orbital-heading p{font-size:15px;color:#626675;letter-spacing:.04em;margin-bottom:16px}
 .orbital-heading h1{font-size:clamp(32px,3.4vw,48px);font-weight:500;letter-spacing:-.05em;line-height:1.2}
 .orbital-heading h1 span{color:var(--blue)}
 .orbital-stage{position:absolute;inset:90px 0 35px;max-width:1360px;width:100%;margin:auto}
-#speaker-scene{position:absolute;inset:0;max-width:760px;width:60%;margin:auto;cursor:grab;touch-action:pan-y;outline-offset:-12px;border-radius:50%;z-index:1}
+#speaker-scene{position:absolute;inset:0;max-width:900px;width:68%;margin:auto;cursor:grab;touch-action:pan-y;outline-offset:-12px;border-radius:24px;z-index:1}
 #speaker-scene.is-dragging{cursor:grabbing}
 #speaker-scene canvas,.speaker-poster{position:absolute;inset:0;width:100%;height:100%;display:block;object-fit:contain}
-#speaker-scene canvas{opacity:0}#speaker-scene[data-ready=true] canvas{opacity:1}#speaker-scene[data-ready=true] .speaker-poster{opacity:0}
+#speaker-scene canvas{opacity:0;transition:opacity .45s ease}#speaker-scene[data-ready=true] canvas{opacity:1}#speaker-scene[data-ready=true] .speaker-poster{opacity:0}
 .orbital-nav{position:absolute;inset:0;z-index:2;pointer-events:none;--orbit-x:0px;--orbit-y:0px}
 .orbit-link{position:absolute;display:flex;align-items:center;gap:18px;pointer-events:auto;color:var(--blue);font-size:19px;font-weight:500;line-height:1.4;letter-spacing:-.025em;padding:12px 0;min-height:48px;transition:color .2s;transform:translate(var(--orbit-x),var(--orbit-y))}
 .orbit-link:hover{text-decoration:underline;text-underline-offset:6px}
-.orbit-building{left:13%;top:21%}.orbit-rooms{right:12%;top:17%}
-.orbit-environment{left:10%;top:57%}.orbit-office{right:13%;top:49%}.orbit-contact{right:20%;top:75%;font-size:18px}
+.orbit-building{left:8%;top:21%}.orbit-rooms{right:7%;top:17%}
+.orbit-environment{left:6%;top:57%}.orbit-office{right:8%;top:49%}.orbit-contact{right:20%;top:75%;font-size:18px}
 .orbital-bottom{position:absolute;inset:auto 48px 24px;min-height:44px;display:flex;align-items:center;justify-content:space-between;gap:20px;color:#626675;font-size:12px}
 .orbital-bottom a{position:absolute;left:50%;transform:translateX(-50%);color:var(--blue);font-size:14px;padding:10px;display:flex;gap:18px;align-items:center}.orbital-bottom a span{font-size:21px}
 @media(min-width:768px) and (max-height:760px){.orbital-hero{min-height:calc(100svh - var(--header-height))}.orbital-heading{top:24px}.orbital-heading p{margin-bottom:10px}.orbital-stage{top:94px;bottom:46px}.orbital-bottom{bottom:8px}}
@@ -71,7 +71,7 @@
   .orbital-heading h1 span{display:block}
   .orbital-stage{top:98px;bottom:205px}
   #speaker-scene{width:100%;max-width:none;inset:0}
-  #speaker-scene canvas,.speaker-poster{transform:scale(1.2)}
+  #speaker-scene canvas,.speaker-poster{transform:none}
   .orbital-nav{inset:auto 24px -178px;width:auto;height:158px;display:grid;grid-template-columns:1.2fr 1fr;gap:0 22px;transform:none}
   .orbit-link{position:static;transform:none;min-height:52px;font-size:17px;line-height:1.25;padding:11px 0;gap:0;align-items:center;border-top:1px solid #172fc529;letter-spacing:-.025em}
   .orbit-link br{display:none}.orbit-link br:after{content:' '}
@@ -81,7 +81,7 @@
   .orbital-bottom>p{font-size:11px;max-width:92px;line-height:1.35}
   .orbital-bottom a{font-size:13px;gap:9px;white-space:nowrap;bottom:0}
 }
-@media(prefers-reduced-motion:reduce){.orbit-link{transform:none!important}}
+@media(prefers-reduced-motion:reduce){.orbit-link{transform:none!important}#speaker-scene canvas{transition:none}}
 
 /* Illustrations acoustiques et lucane interactif. */
 .lucane-walker{position:relative;width:100%;height:120px;background:var(--bg,#f5f5f2);z-index:3}
