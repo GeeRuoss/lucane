@@ -1,4 +1,4 @@
-# Lucane : proposition de refonte
+# Lucane : site vitrine
 
 Site statique en français, 10 pages dont une étude 3D hors menu. Source publique métier : lucane.ch. Recherche documentée dans SOURCES.md.
 
@@ -18,11 +18,13 @@ https://geeruoss.github.io/lucane/
 
 Le workflow main publie uniquement dist sur GitHub Pages. Noindex explicite sur toutes les pages et sitemap vide : cet aperçu ne doit pas concurrencer le site officiel.
 
-## Mise en service officielle à préparer après validation
+## Publication officielle sur lucane.ch
 
-Confirmer les textes, l’hébergement définitif, l’activité WhatsApp du mobile publié, la politique de traitement des demandes et le service analytics. Aucun outil d’audience activé ; l’événement local `lucane:conversion` ne transmet aucune donnée. E-mail et téléphone sont accessibles en complément.
+La mise en ligne sur le domaine officiel a été autorisée le 30 octobre 2026. L’hébergement Ex2 existant est conservé. `npm run build:production` génère `dist-production/` avec les liens à la racine de https://lucane.ch/, les canoniques officielles, huit URL dans le sitemap et les pages publiques indexables. La page 404 et l’étude 3D restent en noindex. Le build de l’aperçu GitHub demeure séparé dans `dist/`, sans indexation.
 
-La publication sur lucane.ch n’est pas faite. Pour une future version officielle, renseigner SITE_MODE=production SITE_ORIGIN=https://lucane.ch SITE_BASE=/ ; vérifier le sitemap et les canoniques, puis préparer les redirections 301 depuis les anciennes URLs PHP sur l’hébergeur retenu. Adapter les textes de confidentialité et les conditions à la version officielle. Les vérifications Search Console et l’indexation demandent l’accès du propriétaire.
+`legal.mjs` adapte les informations d’édition et d’hébergement à chaque destination. `deploy/production.htaccess`, copié uniquement dans le build officiel, privilégie l’accueil HTML, redirige les anciennes pages PHP, normalise HTTPS et www et fournit une vraie page 404. Les anciens PDF conservent leurs adresses. Avant chaque remplacement, sauvegarder les fichiers existants hors de la racine publique, envoyer les assets et pages internes, puis l’accueil et la configuration. Les accès et rapports de déploiement restent hors du dépôt public.
+
+Aucun outil d’audience activé. L’ancien identifiant Universal Analytics du site historique n’est pas repris. E-mail et téléphone restent directement accessibles. Les vérifications Search Console et la mesure d’audience nécessitent les accès ou l’identifiant du propriétaire. La présence effective du mobile sur WhatsApp n’a pas été vérifiée par envoi de message.
 
 Aucun tarif, avis, résultat technique ou accréditation n’est inventé. Le laboratoire béton cédé en 2024 ne figure pas dans l’offre actuelle.
 

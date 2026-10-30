@@ -1,0 +1,26 @@
+# Site officiel Lucane, hébergement Apache / LiteSpeed existant.
+DirectoryIndex index.html index.php
+ErrorDocument 404 /404.html
+
+<IfModule mod_rewrite.c>
+RewriteEngine On
+
+RewriteCond %{HTTPS} !=on [OR]
+RewriteCond %{HTTP_HOST} ^www\.lucane\.ch$ [NC]
+RewriteRule ^ https://lucane.ch%{REQUEST_URI} [R=301,L,NE]
+
+RewriteRule ^index\.php$ / [R=301,L]
+RewriteRule ^contact\.php$ /contact/ [R=301,L]
+RewriteRule ^(?:ANCIEN)?Societe_(?:activites|equipe|historique)\.php$ /bureau/ [R=301,L]
+RewriteRule ^Prestations_acoustique\.(?:php|html)$ /#expertises [R=301,L,NE]
+RewriteRule ^Reference_acoustique\.php$ /bureau/ [R=301,L]
+RewriteRule ^(?:Prestations|Reference)_materiaux_construction\.php$ /bureau/ [R=301,L]
+RewriteRule ^Prestations_partenaires\.php$ /bureau/ [R=301,L]
+RewriteRule ^Prestations_liste_de_prix\.php$ /contact/ [R=301,L]
+</IfModule>
+
+<IfModule mod_headers.c>
+<FilesMatch "\.(?:html|txt|xml)$">
+Header set Cache-Control "no-cache"
+</FilesMatch>
+</IfModule>
