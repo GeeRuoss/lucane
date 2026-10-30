@@ -60,7 +60,8 @@ export function createAcousticBackdrop() {
   function arrive(panelProgress, graphProgress) {
     panel.position.set(-.37, .73 - (1 - panelProgress) * .12, -.31);
     panel.rotation.z = .11 + (1 - panelProgress) * .07;
-    graph.position.set(.33 + (1 - graphProgress) * .13, .87, -.26 - (1 - graphProgress) * .10);
+    // Avancer le graphique devant la tôle et dégager la courbe au-dessus de la boule.
+    graph.position.set(.33 + (1 - graphProgress) * .13, .97, .06 - (1 - graphProgress) * .04);
     graph.rotation.z = -.095 - (1 - graphProgress) * .06;
     curveGeometry.setDrawRange(0, Math.floor(totalIndices * graphProgress / 3) * 3);
   }

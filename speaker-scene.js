@@ -126,7 +126,7 @@ function mount() {
     camera.aspect = width / height;
     camera.updateProjectionMatrix();
     // Contenir toute la composition sur un téléphone étroit, sans recadrage CSS.
-    spherical.radius = initialRadius * Math.max(1, 1.08 / camera.aspect);
+    spherical.radius = initialRadius * Math.max(1, 1.14 / camera.aspect);
     request();
   }
   new ResizeObserver(resize).observe(host);

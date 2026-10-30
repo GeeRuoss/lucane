@@ -52,3 +52,6 @@ Le panneau perforé et la courbe rejoignent la scène d’accueil derrière la b
 Poster `assets/accueil-acoustique-v5.webp` (900 × 834, transparent), exporté de la scène finale ; carte `assets/partage-lucane-v5.png` (1200 × 630). Pour renouveler le poster, exporter le canvas de la même scène avec `data-capture="true"` et un cadre de 900 × 834, puis optimiser en WebP. Ce mode fige la vue finale et conserve le tampon WebGL uniquement pour la capture. Les fichiers de contrôle restent dans `qa/`, exclus du dépôt et du build.
 
 Contrôles locaux : rendus à 320 × 640, 390 × 844, 768 × 900, 1280 × 720, 1440 × 900 et 1920 × 1080 ; menu mobile ; clavier, retour initial et glissement souris ; image de repli avec WebGL rendu indisponible ; branche de mouvement réduit simulée. Sur petit téléphone, la scène et les liens peuvent dépasser en hauteur pour rester lisibles. Pas de validation sur téléphone physique. Aperçu GitHub Pages uniquement.
+
+
+Précision du 30 octobre : le support de la courbe est avancé devant la tôle perforée et légèrement relevé pour rendre le tracé visible. La boule reste au premier plan. Poster et carte de partage v6 synchronisés, contrôle visuel bureau 1440 px et téléphone 390 px.
