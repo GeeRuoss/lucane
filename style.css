@@ -137,3 +137,12 @@
 body:has(.lucane-study) .contact-bubble{display:none}
 
 .contact-page{display:block}.contact-page>div{max-width:760px}
+
+/* Équipe du bureau : trois profils sur ordinateur, lecture verticale sur mobile. */
+.bureau-team{padding-bottom:0}
+.team-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px;margin-top:42px}
+.team-grid article{border-top:1px solid var(--line);padding-top:24px}
+.team-grid h3{font-size:28px;line-height:1.25;letter-spacing:-.04em;font-weight:700}
+.team-grid .team-qualification{color:var(--blue);font-size:20px;margin:12px 0 8px}
+.team-grid p{font-size:18px;line-height:1.6}
+@media(max-width:900px){.team-grid{grid-template-columns:1fr;gap:30px;margin-top:32px}}
