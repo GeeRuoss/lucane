@@ -1,6 +1,6 @@
 # Lucane : site vitrine
 
-Site statique en français, 10 pages dont une étude 3D hors menu. Source publique métier : lucane.ch. Recherche documentée dans SOURCES.md.
+Site statique en français, 11 pages dont une étude 3D hors menu. Source publique métier : lucane.ch. Recherche documentée dans SOURCES.md.
 
 ## Travail local
 
@@ -10,7 +10,7 @@ Site statique en français, 10 pages dont une étude 3D hors menu. Source publiq
 
 Pages HTML générées par build.mjs ; contenu commun dans site-data.mjs ; CSS et JS sans framework ; scènes Three.js locales. Aucun appel externe au chargement. Accueil cadré sur une fenêtre visible, titre plafonné à 48 px et composition limitée à 1 360 px. La scène et le modèle sont préchargés sur ordinateur et téléphone. Une entrée de 3,2 secondes révèle le panneau et dessine la courbe derrière le haut-parleur, puis s’arrête. Réaction discrète au pointeur, glissement horizontal et flèches du clavier pour changer le point de vue ; Début rétablit la vue. L’amplitude est limitée pour garder les panneaux à l’arrière. Défilement vertical préservé, réduction des mouvements respectée, rendu limité à environ 30 images/s et arrêté hors écran ou dans un onglet masqué. Le poster correspondant à la scène est réservé au repli sans JavaScript ou en cas d’échec WebGL ; aucune image différente ne précède la 3D. Aucun bouton ou texte décoratif ajouté.
 
-Logo vectoriel en tracés : assets/logo.svg, logo-white.svg, logo-blue.svg. Police libre Manrope, licence dans assets/FONT-LICENSE.txt après build. `node logo.mjs` régénère les logos ; `node poster.mjs` régénère le rendu de repli depuis les mêmes géométries que la scène ; `node social.mjs` régénère l’image de partage.
+Logo vectoriel en tracés, composé « bS Lucane sàrl » depuis le 13 novembre 2026 : assets/logo.svg, logo-white.svg, logo-blue.svg. Police libre Manrope, licence dans assets/FONT-LICENSE.txt après build. `node logo.mjs` régénère les logos ; `node poster.mjs` régénère le rendu de repli depuis les mêmes géométries que la scène ; `node social.mjs` régénère l’image de partage.
 
 ## Prévisualisation
 
@@ -20,7 +20,7 @@ Le workflow main publie uniquement dist sur GitHub Pages. Noindex explicite sur 
 
 ## Publication officielle sur lucane.ch
 
-La mise en ligne sur le domaine officiel a été autorisée le 30 octobre 2026. L’hébergement Ex2 existant est conservé. `npm run build:production` génère `dist-production/` avec les liens à la racine de https://lucane.ch/, les canoniques officielles, huit URL dans le sitemap et les pages publiques indexables. La page 404 et l’étude 3D restent en noindex. Le build de l’aperçu GitHub demeure séparé dans `dist/`, sans indexation.
+La mise en ligne sur le domaine officiel a été autorisée le 30 octobre 2026. L’hébergement Ex2 existant est conservé. `npm run build:production` génère `dist-production/` avec les liens à la racine de https://lucane.ch/, les canoniques officielles, neuf URL dans le sitemap et les pages publiques indexables. La page 404 et l’étude 3D restent en noindex. Le build de l’aperçu GitHub demeure séparé dans `dist/`, sans indexation.
 
 `legal.mjs` adapte les informations d’édition et d’hébergement à chaque destination. `deploy/production.htaccess`, copié uniquement dans le build officiel, privilégie l’accueil HTML, redirige les anciennes pages PHP, normalise HTTPS et www et fournit une vraie page 404. Les anciens PDF conservent leurs adresses. Avant chaque remplacement, sauvegarder les fichiers existants hors de la racine publique, envoyer les assets et pages internes, puis l’accueil et la configuration. Les accès et rapports de déploiement restent hors du dépôt public.
 
@@ -63,3 +63,15 @@ Les cinq liens autour de la scène ont un contour bleu et des coins arrondis pou
 ## Équipe du bureau, 5 novembre 2026
 
 La page « Le bureau » présente Bruno Schroeter (Dr. EPF/SIA, Fondateur), Florence Vaudan (Ing. HES, Collaboratrice technique depuis 2013) et Vincent Vernay (Ing. EPF, Collaborateur technique depuis 2026). Les profils sont centralisés dans `site-data.mjs`, affichés en trois colonnes sur ordinateur et empilés sur mobile.
+
+## Retours de Florence, 12 novembre 2026
+
+Demandes reçues par WhatsApp et préparées le 13 novembre.
+
+- Accueil : le bloc « Ancré à Saxon / Un regard précis. Une relation simple. » est supprimé. La page se termine par les trois prestations.
+- Nouvelle page `references/`, ajoutée aux menus ordinateur et mobile entre « Le bureau » et « Contact ». Elle reprend le texte « Des lieux de vie. Des enjeux différents. » et la liste des quatre contextes, retirés de la page « Le bureau », qui se termine désormais par l’équipe.
+- Logo : « bS Lucane sàrl » à la place de « lucane », dans l’en-tête et le pied de page. `logo.mjs` pose les trois mots un à un pour garder des espaces lisibles. Largeurs : 290 px sur ordinateur, 216 px sur tablette, 208 px au plus sur téléphone (170 px à 320 px de large), 230 px dans le pied de page.
+- Carte de partage `assets/partage-lucane-v7.png` : `social.mjs` reprend le logo vectoriel, nouvelle adresse pour renouveler les aperçus.
+- `deploy/production.htaccess` : l’ancienne adresse `Reference_acoustique.php` mène à `/references/`.
+
+Les liens autour de la scène d’accueil restent les cinq existants. Le titre des onglets et la mention du pied de page gardent « Lucane ».
