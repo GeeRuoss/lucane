@@ -7,7 +7,7 @@ export function legalPages({live, company: c, credits}) {
   const hosting = live
     ? `<p>Le site est hébergé par Ex2. Les journaux techniques de l’hébergeur enregistrent notamment l’adresse IP, les pages demandées et des informations sur le navigateur afin de fournir le site, détecter les abus et assurer sa sécurité. Les règles de conservation et les informations sur les traitements de l’hébergeur figurent dans sa <a href="https://www.ex2.com/ca/privacy-policy" target="_blank" rel="noopener">politique de confidentialité</a>. Ex2 indique exploiter ses principaux centres de données en France et au Canada.</p>`
     : `<p>Cette prévisualisation est hébergée par GitHub Pages. L’hébergeur peut traiter des informations techniques, notamment l’adresse IP, pour fournir et sécuriser le service. Voir la <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener">déclaration de confidentialité de GitHub</a>.</p>`;
-  const contactPrivacy = `<p>Le lien WhatsApp ouvre une conversation ; vous décidez ensuite de l’envoi de votre message. WhatsApp applique sa propre <a href="https://www.whatsapp.com/legal/privacy-policy" target="_blank" rel="noopener">politique de confidentialité</a>. Les liens e-mail et téléphone ouvrent votre application habituelle. Le site ne reçoit ni ne stocke le contenu de ces échanges.</p>`;
+  const contactPrivacy = `<p>Les liens e-mail et téléphone ouvrent votre application habituelle. Le site ne reçoit ni ne stocke le contenu de ces échanges.</p>`;
   const privacyEnd = live
     ? `<h2>Vos demandes et vos droits</h2><p>Lorsque vous contactez Lucane, les coordonnées et informations que vous transmettez permettent au bureau de répondre à votre demande et de suivre votre projet. Pour connaître les données conservées dans le cadre de vos échanges, leur durée de conservation, ou demander leur accès, leur rectification ou leur suppression dans les limites légales applicables, contactez ${mail}.</p>`
     : `<h2>Avant la mise en service officielle</h2><p>Les informations relatives à l’hébergement définitif et à la gestion des demandes devront être confirmées avec Lucane avant le remplacement du site actuel.</p>`;
@@ -18,7 +18,7 @@ export function legalPages({live, company: c, credits}) {
     {
       path: 'confidentialite/', title: 'Confidentialité',
       description: live ? 'Données, hébergement et moyens de contact utilisés par le site Lucane.' : 'Informations sur les données et les services utilisés par cette proposition de site Lucane.',
-      content: `<section class="legal section"><p class="eyebrow">Informations</p><h1>Confidentialité</h1>${privacyIntro}<h2>Navigation et hébergement</h2>${hosting}<h2>Vos messages</h2>${contactPrivacy}<h2>Cookies et mesure d’audience</h2><p>Aucun outil publicitaire ou de mesure d’audience n’est activé. Les polices et la scène 3D sont hébergées avec le site. Le navigateur retient seulement, pour la session en cours, que l’invitation de contact a déjà été affichée.</p>${privacyEnd}</section>`,
+      content: `<section class="legal section"><p class="eyebrow">Informations</p><h1>Confidentialité</h1>${privacyIntro}<h2>Navigation et hébergement</h2>${hosting}<h2>Vos messages</h2>${contactPrivacy}<h2>Cookies et mesure d’audience</h2><p>Aucun outil publicitaire ou de mesure d’audience n’est activé. Les polices et la scène 3D sont hébergées avec le site.</p>${privacyEnd}</section>`,
     },
     {
       path: 'conditions/', title: 'Conditions d’utilisation',

@@ -5,8 +5,8 @@ export const sceneBackground = 0xe9e9e7;
 /** Four related, intentionally abstract studies of sound and its environment. */
 export function createAcousticModel(kind = 'abstract') {
   const model = new THREE.Group();
-  const blue = new THREE.MeshStandardMaterial({ color: 0x1836cb, roughness: .42, metalness: .06 });
-  const dark = new THREE.MeshStandardMaterial({ color: 0x142969, roughness: .56, metalness: .025 });
+  const blue = new THREE.MeshStandardMaterial({ color: 0x2b74b7, roughness: .42, metalness: .06 });
+  const dark = new THREE.MeshStandardMaterial({ color: 0x19466e, roughness: .56, metalness: .025 });
   const pale = new THREE.MeshStandardMaterial({ color: 0xdfe3ea, roughness: .86 });
   const leaf = new THREE.MeshStandardMaterial({ color: 0xaebadb, roughness: .8 });
   const add = (geometry, material, x = 0, y = 0, z = 0, parent = model) => {
@@ -129,7 +129,7 @@ export function createAcousticModel(kind = 'abstract') {
     tree(1.47, elevation(1.47, .42), .42, .80);
     tree(.32, elevation(.32, -1.04), -1.04, .60);
   } else {
-    // The original acoustic gesture: twenty-three cobalt fins, two rolling crests.
+    // The original acoustic gesture: twenty-three blue fins, two rolling crests.
     for (let i = 0; i < 23; i++) {
       const t = i / 22;
       const h = 1.08 + 2.05 * Math.sin(t * Math.PI * 1.5 + .17) ** 2;

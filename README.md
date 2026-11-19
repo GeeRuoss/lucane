@@ -24,13 +24,13 @@ La mise en ligne sur le domaine officiel a été autorisée le 30 octobre 2026. 
 
 `legal.mjs` adapte les informations d’édition et d’hébergement à chaque destination. `deploy/production.htaccess`, copié uniquement dans le build officiel, privilégie l’accueil HTML, redirige les anciennes pages PHP, normalise HTTPS et www et fournit une vraie page 404. Les anciens PDF conservent leurs adresses. Avant chaque remplacement, sauvegarder les fichiers existants hors de la racine publique, envoyer les assets et pages internes, puis l’accueil et la configuration. Les accès et rapports de déploiement restent hors du dépôt public.
 
-Aucun outil d’audience activé. L’ancien identifiant Universal Analytics du site historique n’est pas repris. E-mail et téléphone restent directement accessibles. Les vérifications Search Console et la mesure d’audience nécessitent les accès ou l’identifiant du propriétaire. La présence effective du mobile sur WhatsApp n’a pas été vérifiée par envoi de message.
+Aucun outil d’audience activé. L’ancien identifiant Universal Analytics du site historique n’est pas repris. E-mail et téléphone restent directement accessibles. Les vérifications Search Console et la mesure d’audience nécessitent les accès ou l’identifiant du propriétaire.
 
 Aucun tarif, avis, résultat technique ou accréditation n’est inventé. Le laboratoire béton cédé en 2024 ne figure pas dans l’offre actuelle.
 
 ## Direction visuelle, version 5
 
-Haut-parleur omnidirectionnel fourni pour le projet, posé sur un trépied à trois pieds. Accueil minimal, fond clair, bleu Lucane #172fc5, liens répartis autour du modèle sur ordinateur. Sur téléphone, modèle agrandi et navigation tactile en deux colonnes sous la scène. Les trois expertises conservent leurs compositions abstraites : maison en strates, salle ouverte et relief. `node poster.mjs` régénère leurs posters ; `poster-speaker.py` régénère le poster du haut-parleur avec Blender et Pillow. `node social.mjs` produit la carte de partage v5 depuis le poster de la composition complète ; le build la régénère aussi. `editorial.mjs` centralise les photos et textes complémentaires. Droits : voir CREDITS.md et la page Conditions.
+Haut-parleur omnidirectionnel fourni pour le projet, posé sur un trépied à trois pieds. Accueil minimal, fond clair, bleu Lucane #2B74B7, liens répartis autour du modèle sur ordinateur. Sur téléphone, modèle agrandi et navigation tactile en deux colonnes sous la scène. Les trois expertises conservent leurs compositions abstraites : maison en strates, salle ouverte et relief. `node poster.mjs` régénère leurs posters ; `poster-speaker.py` régénère le poster du haut-parleur avec Blender et Pillow. `node social.mjs` produit la carte de partage v5 depuis le poster de la composition complète ; le build la régénère aussi. `editorial.mjs` centralise les photos et textes complémentaires. Droits : voir CREDITS.md et la page Conditions.
 
 ## Corrections du 19 octobre 2026
 
@@ -75,3 +75,10 @@ Demandes reçues par WhatsApp et préparées le 13 novembre.
 - `deploy/production.htaccess` : l’ancienne adresse `Reference_acoustique.php` mène à `/references/`.
 
 Les liens autour de la scène d’accueil restent les cinq existants. Le titre des onglets et la mention du pied de page gardent « Lucane ».
+
+
+## Bleu de référence et contact, 19 novembre 2026
+
+Bleu principal #2B74B7 repris de la référence fournie : titres, boutons, pied de page, favicon, illustrations et scènes 3D. Les petits boutons bleus reposent sur un fond blanc pour conserver leur contraste ; les liens du pied de page gardent un focus blanc visible au clavier. Suppression du bouton WhatsApp, de la bulle temporisée, de son stockage de session et des mentions de ce canal dans la confidentialité. Le contact passe par l’e-mail et le téléphone déjà présents.
+
+Posters de prestations régénérés depuis les mêmes géométries ; nouveau poster d’accueil `assets/accueil-acoustique-v8.webp` capturé depuis la scène finale et carte de partage `assets/partage-lucane-v8.png`. URL des scènes et des visuels versionnées pour renouveler le cache. Les anciennes images de partage restent disponibles à leurs adresses.

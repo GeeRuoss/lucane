@@ -41,7 +41,7 @@ export function createAcousticBackdrop() {
   const gridPoints = [];
   for (let x = -.43; x <= .44; x += .145) gridPoints.push(x, -.29, .019, x, .29, .019);
   for (let y = -.29; y <= .30; y += .116) gridPoints.push(-.43, y, .019, .44, y, .019);
-  const grid = new THREE.LineSegments(new THREE.BufferGeometry().setAttribute('position', new THREE.Float32BufferAttribute(gridPoints, 3)), new THREE.LineBasicMaterial({color: 0x172fc5, transparent: true, opacity: .16}));
+  const grid = new THREE.LineSegments(new THREE.BufferGeometry().setAttribute('position', new THREE.Float32BufferAttribute(gridPoints, 3)), new THREE.LineBasicMaterial({color: 0x2b74b7, transparent: true, opacity: .16}));
   graph.add(grid);
 
   // Silhouette inspirée du document de Florence, sans chiffres ni mesure annoncée.
@@ -49,7 +49,7 @@ export function createAcousticBackdrop() {
   const points = response.map(([x, y]) => new THREE.Vector3(-.43 + x * .87, -.245 + y * .52, .033));
   const curve = new THREE.CatmullRomCurve3(points, false, 'centripetal', .2);
   const curveGeometry = new THREE.TubeGeometry(curve, 160, .0065, 7, false);
-  const trace = new THREE.Mesh(curveGeometry, new THREE.MeshStandardMaterial({color: 0x172fc5, roughness: .3, metalness: .15}));
+  const trace = new THREE.Mesh(curveGeometry, new THREE.MeshStandardMaterial({color: 0x2b74b7, roughness: .3, metalness: .15}));
   graph.add(trace);
   const referencePoints = [[-.43,.06],[-.32,.19],[-.18,.17],[.02,.09],[.18,-.09],[.37,-.25]].map(([x,y]) => new THREE.Vector3(x,y,.025));
   const reference = new THREE.Line(new THREE.BufferGeometry().setFromPoints(referencePoints), new THREE.LineDashedMaterial({color: 0x7f8aa9, dashSize: .018, gapSize: .016, transparent: true, opacity: .65}));

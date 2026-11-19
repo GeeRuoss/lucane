@@ -34,8 +34,8 @@ function mount() {
   scene.environment = env.texture;
   scene.environmentIntensity = .48;
   environment.dispose(); pmrem.dispose();
-  scene.add(new THREE.HemisphereLight(0xf3f5ff, 0x565b72, 2));
-  for (const [color, power, pos] of [[0xffffff, 3.3, [-2, 3, 3]], [0x8197ff, 1.9, [2, 1.5, 1]], [0x172fc5, 1.5, [-1, 1, -2]]]) {
+  scene.add(new THREE.HemisphereLight(0xf3f8ff, 0x566572, 2));
+  for (const [color, power, pos] of [[0xffffff, 3.3, [-2, 3, 3]], [0x81b2df, 1.9, [2, 1.5, 1]], [0x2b74b7, 1.5, [-1, 1, -2]]]) {
     const light = new THREE.DirectionalLight(color, power);
     light.position.set(...pos); scene.add(light);
   }
